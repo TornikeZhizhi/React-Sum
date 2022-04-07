@@ -11,15 +11,9 @@ import Divider from '@mui/material/Divider';
 import { textAlign } from "@mui/system";
 import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
+import ProductList from "../ProductList";
 // import Box from '@mui/material/Box';
 
-const Item = styled(Paper)(({ theme }) => ({
-    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-    ...theme.typography.body2,
-    padding: theme.spacing(2),
-    // textAlign: 'center',
-    color: theme.palette.text.secondary,
-  }));
 
 const Products = () => {
 
@@ -48,25 +42,7 @@ const Products = () => {
             <Typography variant="h3" m={3} style={{textAlign:"center"}}>Products List</Typography>
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={1}>
-                    {posts.map((data)=>(
-                            <Grid item xs={6} key={data.id}>
-                               <Item>
-                                   <Typography variant="h5" color="#000" m={2}>
-                                         {data.title}
-                                   </Typography>
-                                     <Divider></Divider>
-                                   <Typography variant="h6" p={2}>
-                                     {data.body.split(' ').splice(0,7).join(' ') + "..."}
-                                   </Typography>
-
-                                    <Button variant="contained"
-                                     component={Link}
-                                     to={`/products/${data.id}`}
-                                     href="#contained-buttons">
-                                        Read More...</Button>
-                               </Item>
-                            </Grid>
-                    ))}
+                    <ProductList posts={posts}></ProductList>
                 </Grid>
             </Box>
         </Container> }
