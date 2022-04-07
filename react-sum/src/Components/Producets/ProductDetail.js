@@ -37,8 +37,8 @@ const Product = () => {
             <Box sx={{ flexGrow: 1 }}>
                 <Grid container spacing={1}   justifyContent="center">
                     <Grid item xs={8} >
-                        <Typography variant="h4" m={3} ml={0}>{title}</Typography>
-                          <Typography variant="h5" mb={1}>{text}</Typography>  
+                        <Typography variant="h4" textTransform="capitalize" m={3} ml={0}>{title}</Typography>
+                        <Typography textTransform="capitalize" variant="h5" mb={1}>{text}</Typography>  
                         <Button variant="contained"
                             component={Link}
                             to={`/products`}

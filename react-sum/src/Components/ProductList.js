@@ -21,12 +21,12 @@ const Item = styled(Paper)(({ theme }) => ({
         {props.posts.map((data)=>(
             <Grid item xs={6} key={data.id}>
                <Item>
-                   <Typography variant="h5" color="#000" m={2}>
-                         {data.title}
+                   <Typography variant="h5" color="#000" m={2} textTransform="capitalize">
+                         {data.title.slice(0,10)}
                    </Typography>
                      <Divider></Divider>
                    <Typography variant="h6" p={2}>
-                     {data.body.split(' ').splice(0,7).join(' ') + "..."}
+                     {data.body.split(' ').splice(0,5).join(' ') + "..."}
                    </Typography>
 
                     <Button variant="contained"
