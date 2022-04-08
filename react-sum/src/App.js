@@ -3,17 +3,26 @@ import {Route ,Switch ,Redirect} from "react-router-dom"
 import Products from "./Components/Producets/Products";
 import ProductDetail from "./Components/Producets/ProductDetail";
 import Home from "./Home/Home";
+import HeaderSwitchContext from "./ContextApi/HeaderSwitcherContext";
+
+
+
+const colorHandler = (event) => {
+  console.log(event.target.checked)
+}
 
 function App() {
   return (
     <div className="App">
 
+        <HeaderSwitchContext.Provider value={{
+
+    isDark:false,
+    colorHandler:colorHandler
+}}>
         <Header></Header>
-        
+  
         <Switch>
-          {/* <Route to="/" exact>
-            <Redirect to="/products">
-          </Route> */}
           <Route path="/products" exact>
             <Products></Products>
           </Route>
@@ -24,6 +33,7 @@ function App() {
             <Home></Home>
           </Route>
         </Switch>
+        </HeaderSwitchContext.Provider>
         
     </div>
   );

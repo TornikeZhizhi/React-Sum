@@ -16,7 +16,7 @@ const Product = () => {
 
     useEffect(()=>{
 
-        axios.get('https://jsonplaceholder.typicode.com/posts/1')
+        axios.get('https://jsonplaceholder.typicode.com/posts/'+params.id)
         .then(response=>{
               setTitle(response.data.title);
               setText(response.data.body);

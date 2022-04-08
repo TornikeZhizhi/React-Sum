@@ -1,8 +1,13 @@
-import React from "react";
+import React,{useContext} from "react";
 import {NavLink,Link } from "react-router-dom"
 import classes from "./header.module.css";
-import DayNightSwitcher from "./HeaderSwitch/DayNightSwitcher.js"
+import DayNightSwitcher from "./HeaderSwitch/DayNightSwitcher.js";
+import HeaderSwitchContext from "../ContextApi/HeaderSwitcherContext";
+// import {SwitcherTheme} from "../ContextApi/HeaderSwitcherContext.js";
 const Header = () => {
+
+    const ctx = useContext(HeaderSwitchContext);
+    console.log(ctx)
     return (
         <header className={classes.header}>
 
