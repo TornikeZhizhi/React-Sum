@@ -4,6 +4,7 @@ import Products from "./Components/Producets/Products";
 import ProductDetail from "./Components/Producets/ProductDetail";
 import Home from "./Home/Home";
 import HeaderSwitchContext from "./ContextApi/HeaderSwitcherContext";
+import ProductsContext from "./ContextApi/ProductsContext";
 
 
 
@@ -16,19 +17,22 @@ function App() {
     <div className="App">
 
         <HeaderSwitchContext>
-        <Header></Header>
-  
-        <Switch>
-          <Route path="/products" exact>
-            <Products></Products>
-          </Route>
-          <Route path="/products/:id">
-            <ProductDetail></ProductDetail>
-          </Route>
-          <Route to="/" exact>
-            <Home></Home>
-          </Route>
-        </Switch>
+          <ProductsContext>
+
+          <Header></Header>
+    
+          <Switch>
+            <Route path="/products" exact>
+              <Products></Products>
+            </Route>
+            <Route path="/products/:id">
+              <ProductDetail></ProductDetail>
+            </Route>
+            <Route to="/" exact>
+              <Home></Home>
+            </Route>
+          </Switch>
+          </ProductsContext>
         </HeaderSwitchContext>
         
     </div>

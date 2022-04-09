@@ -3,10 +3,6 @@ import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch, { SwitchProps } from '@mui/material/Switch';
 import { styled } from '@mui/material/styles';
-import Stack from '@mui/material/Stack';
-import Typography from '@mui/material/Typography';
-import HeaderSwitchContext from "../../ContextApi/HeaderSwitcherContext";
-
 import {SwitcherTheme} from "../../ContextApi/HeaderSwitcherContext.js";
 
 
@@ -61,7 +57,6 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 export default function DayNightSwitcher() {
   const ctx = useContext(SwitcherTheme);
   // console.log(ctx)
-  // const ctx = useContext(HeaderSwitchContext);
   return (
     <FormGroup>
       <FormControlLabel
