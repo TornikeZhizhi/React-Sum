@@ -39,3 +39,13 @@
     padding-bottom: 0.25rem;
     border-bottom: 4px solid #95bcf0;
   }
+
+
+  .day {
+    background-color: #bc7623;
+  }
+
+
+  .dark {
+    background-color: #044599;
+  }

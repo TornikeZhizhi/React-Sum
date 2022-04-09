@@ -1,30 +1,23 @@
 
-import React, {Component, createContext} from "react";
+import React, {Component, createContext, useState} from "react";
+
+export const SwitcherTheme = createContext();
+
+const HeaderSwitchContext = (props)=> {
+
+    const [isDarkMode, setisDarkMode] = useState(true)
 
 
-const HeaderSwitchContext = React.createContext({
+  const toggleTheme = ()=>{
+        setisDarkMode(!isDarkMode)
+    }
 
-    isDark:false,
-})
-
-
+    return(
+        <SwitcherTheme.Provider value={{isDarkMode:isDarkMode,
+            toggleTheme:toggleTheme}}>
+            {props.children}
+        </SwitcherTheme.Provider>
+        )
+    
+}
 export default HeaderSwitchContext;
-
-
-// export const SwitcherTheme = createContext();
-
-// class HeaderSwitchContext extends Component {
-
-//     state = { 
-//         isDarkMode:false,
-//     }
-
-//     render(){
-//         return(
-//             <SwitcherTheme.Provider value={{isDarkMode:this.state.isDarkMode}}>
-//                 {this.props.children}
-//             </SwitcherTheme.Provider>
-//             )
-//     }
-// }
-// export default HeaderSwitchContext;

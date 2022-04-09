@@ -6,6 +6,11 @@ import { styled } from '@mui/material/styles';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import HeaderSwitchContext from "../../ContextApi/HeaderSwitcherContext";
+
+import {SwitcherTheme} from "../../ContextApi/HeaderSwitcherContext.js";
+
+
+
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
   height: 34,
@@ -54,12 +59,13 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
 }));
 
 export default function DayNightSwitcher() {
-
-  const ctx = useContext(HeaderSwitchContext);
+  const ctx = useContext(SwitcherTheme);
+  // console.log(ctx)
+  // const ctx = useContext(HeaderSwitchContext);
   return (
     <FormGroup>
       <FormControlLabel
-        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked onChange={ctx.colorHandler} />}
+        control={<MaterialUISwitch sx={{ m: 1 }} defaultChecked onChange={ctx.toggleTheme}  />}
       />
     </FormGroup>
   );

@@ -7,19 +7,15 @@ import HeaderSwitchContext from "./ContextApi/HeaderSwitcherContext";
 
 
 
-const colorHandler = (event) => {
-  console.log(event.target.checked)
-}
+// const colorHandler = (event) => {
+//   console.log(event.target.checked)
+// }
 
 function App() {
   return (
     <div className="App">
 
-        <HeaderSwitchContext.Provider value={{
-
-    isDark:false,
-    colorHandler:colorHandler
-}}>
+        <HeaderSwitchContext>
         <Header></Header>
   
         <Switch>
@@ -33,7 +29,7 @@ function App() {
             <Home></Home>
           </Route>
         </Switch>
-        </HeaderSwitchContext.Provider>
+        </HeaderSwitchContext>
         
     </div>
   );
