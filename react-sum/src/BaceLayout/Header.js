@@ -15,6 +15,7 @@ const Header = () => {
                 <ul>
                     <li><NavLink exact activeClassName={classes.active} to="/">Main</NavLink></li>
                     <li><NavLink activeClassName={classes.active} to="/products">Products</NavLink></li>
+                    <li><NavLink activeClassName={classes.active} to="/resource">Resource</NavLink></li>
                 </ul>
                 <DayNightSwitcher></DayNightSwitcher>
             </nav>

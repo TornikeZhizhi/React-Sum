@@ -12,7 +12,7 @@ import {ProductsTheme} from "../../ContextApi/ProductsContext.js"
 const Products = () => {
 
     const ctx = useContext(ProductsTheme);
-    console.log(ctx)
+    // console.log(ctx)
   
     return (
         <>
