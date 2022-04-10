@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -45,12 +45,28 @@ function a11yProps(index) {
 
 const ResourcesMain = (props) => {
 
+    const [resourceData, setResourceData] = useState([])
+
 
     const [value, setValue] = React.useState(0);
 
     const handleChange = (event, newValue) => {
       setValue(newValue);
     };
+
+
+    //resources Handlers
+    
+    const resourceAddHandler= (data)=> {
+        setResourceData([...resourceData,data])
+    }
+
+    const resourceDeleteHandler= (id)=> {
+
+        const deletedData = resourceData.filter(item=>item.id !== id)
+
+        setResourceData(deletedData)
+    }
   
     return (
         <Container p={10}>
@@ -64,12 +80,8 @@ const ResourcesMain = (props) => {
                             <Tab label="Add New Resources" {...a11yProps(1)} />
                         </Tabs>
                         </Box>
-                        <TabPanel value={value} index={0}>
-                            <StoredResource></StoredResource>
-                        </TabPanel>
-                        <TabPanel value={value} index={1}>
-                            <AddNewResources></AddNewResources>
-                        </TabPanel>
+                            {value == 0 && <StoredResource resourceData={resourceData} resourceDeleteHandler={resourceDeleteHandler}></StoredResource>}
+                            {value == 1 &&  <AddNewResources resourceAddHandler={resourceAddHandler}></AddNewResources>}
                     </Box>
                 </Grid>
             </Box>
