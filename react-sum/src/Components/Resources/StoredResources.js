@@ -26,6 +26,12 @@ import EditInputs from "./EditInputs";
         const editId = (id)=>{
             props.resourceEditIdeHandler(id)
         }
+
+    if(props.resourceData.length < 1) {
+
+        return <h2 style={{textAlign:"center",marginTop:"20px", color:"red"}}>Resoruces Not Found...</h2>
+    }
+
     
     return (
         <>

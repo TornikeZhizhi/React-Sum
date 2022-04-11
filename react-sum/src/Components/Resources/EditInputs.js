@@ -16,7 +16,7 @@ const EditInputs = (props)=>{
 
     const  [name, setName] = ResourceInputHook(props.name);
     const  [age, setAge] = ResourceInputHook(props.age);
-
+    
 
     const oNconfirmEditHandler = () =>{
 
