@@ -2,10 +2,18 @@
 
     position: absolute !important;
     top: 50%;
-    transform: translateX(-50%);
     right: 10px;
     z-index: 10;
 }
+
+.edit {
+
+    position: absolute !important;
+    top: 10%;
+    right: 10px;
+    z-index: 10;
+}
+
 
 .relative {
     position: relative;

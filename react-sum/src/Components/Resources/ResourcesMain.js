@@ -64,10 +64,44 @@ const ResourcesMain = (props) => {
     const resourceDeleteHandler= (id)=> {
 
         const deletedData = resourceData.filter(item=>item.id !== id)
-
         setResourceData(deletedData)
     }
-  
+   const resourceEditIdeHandler =(id)=> {
+
+    const editData = resourceData.map(data=>{    
+            if(data.id == id) {
+                
+               return  {...data,edit:true}  
+            }else {
+
+               return data
+            }
+    
+    })
+    setResourceData(editData)
+   }
+
+   const confirmedEditHandler =(newData,id)=>{
+
+    const editData = resourceData.map(data=>{
+
+        // if(data.id == id){
+        //   return {...data,name:newData.name, age:newData.age,edit:false}
+        // }else {
+        //   return data
+        // }
+
+        return data.id === id ? {...data,name:newData.name, age:newData.age,edit:false} : data
+
+    })
+
+    setResourceData(editData)
+    // console.log(data,id)
+
+   }
+
+
+
     return (
         <Container p={10}>
             <Typography variant="h3" m={3} style={{textAlign:"center"}}>Resources</Typography>
@@ -75,13 +109,25 @@ const ResourcesMain = (props) => {
                 <Grid container spacing={1}>
                     <Box sx={{ width: '60%', margin:"0 auto" }}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                        <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                        <Tabs value={value} onChange={handleChange} 
+                        aria-label="basic tabs example">
                             <Tab label="Stored Resources" {...a11yProps(0)} />
                             <Tab label="Add New Resources" {...a11yProps(1)} />
                         </Tabs>
                         </Box>
-                            {value == 0 && <StoredResource resourceData={resourceData} resourceDeleteHandler={resourceDeleteHandler}></StoredResource>}
-                            {value == 1 &&  <AddNewResources resourceAddHandler={resourceAddHandler}></AddNewResources>}
+                            {value == 0 && 
+                            <StoredResource 
+                            resourceData={resourceData}
+                            confirmedEditHandler={confirmedEditHandler}
+                            resourceEditIdeHandler={resourceEditIdeHandler}
+                             resourceDeleteHandler={resourceDeleteHandler}>
+                               
+                            </StoredResource>}
+
+                            {value == 1 &&  
+                            <AddNewResources
+                             resourceAddHandler={resourceAddHandler}>
+                            </AddNewResources>}
                     </Box>
                 </Grid>
             </Box>
