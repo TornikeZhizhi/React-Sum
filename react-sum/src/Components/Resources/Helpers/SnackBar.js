@@ -22,7 +22,7 @@ export default function AlertMassage({ message }) {
           horizontal: "right"
         }}
         open={open}
-        autoHideDuration={25000}
+        autoHideDuration={3000}
         onClose={handleClose}
         variant="warning"
         ContentProps={{

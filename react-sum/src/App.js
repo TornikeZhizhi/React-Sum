@@ -6,7 +6,8 @@ import Home from "./Home/Home";
 import HeaderSwitchContext from "./ContextApi/HeaderSwitcherContext";
 import ProductsContext from "./ContextApi/ProductsContext";
 import ResourcesMain from "./Components/Resources/ResourcesMain";
-
+import ToastsMain from "./Components/Toasts/ToatsMain";
+import ToastsContext from "./Components/Toasts/ToastContext";
 
 
 // const colorHandler = (event) => {
@@ -17,13 +18,17 @@ function App() {
   return (
     <div className="App">
 
+      <ToastsContext>
         <HeaderSwitchContext>
           <ProductsContext>
 
           <Header></Header>
     
           <Switch>
-          <Route path="/resource" exact>
+            <Route path="/toast" exact>
+              <ToastsMain></ToastsMain>
+            </Route>
+            <Route path="/resource" exact>
               <ResourcesMain></ResourcesMain>
             </Route>
             <Route path="/products" exact>
@@ -38,6 +43,7 @@ function App() {
           </Switch>
           </ProductsContext>
         </HeaderSwitchContext>
+        </ToastsContext>
         
     </div>
   );
