@@ -14,7 +14,7 @@ import EditInputs from "./EditInputs";
 
 
     const StoredResource = (props)=>{
-
+            console.log(props.filterWord)
         const  [name, setName] = ResourceInputHook(props.name);
         const  [age, setAge] = ResourceInputHook(props.age);
       
@@ -46,10 +46,9 @@ import EditInputs from "./EditInputs";
                  name={data.name}
                   age={data.age} id={data.id}></EditInputs>
                </div> :
-
-            <>
-                <CardContent>
-
+            
+            <>  
+                 {data.name.includes(props.filterWord) ? <> <CardContent>
                 <Typography variant="h5" component="div">
                      სახელი - {data.name}
                     </Typography>
@@ -64,7 +63,8 @@ import EditInputs from "./EditInputs";
                     <Button  onClick={editId.bind(this,data.id)}  className={classes.edit} startIcon={<EditIcon/>} variant="contained">
                         Edit
                     </Button> 
-                <Box mb={2}></Box> 
+                <Box mb={2}></Box> </> :null}
+               
                 </>
                      }
                 </Card>

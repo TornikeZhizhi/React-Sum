@@ -8,7 +8,7 @@ import { Container } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import StoredResource from "./StoredResources";
 import AddNewResources from "./AddNewResources";
-
+import TextField from '@mui/material/TextField';
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,7 +46,7 @@ function a11yProps(index) {
 const ResourcesMain = (props) => {
 
     const [resourceData, setResourceData] = useState([])
-
+    const [filterName, setFilterName] = useState("")
 
     const [value, setValue] = React.useState(0);
 
@@ -66,39 +66,48 @@ const ResourcesMain = (props) => {
         const deletedData = resourceData.filter(item=>item.id !== id)
         setResourceData(deletedData)
     }
+
    const resourceEditIdeHandler =(id)=> {
 
-    const editData = resourceData.map(data=>{    
-            if(data.id == id) {
-                
-               return  {...data,edit:true}  
-            }else {
+      const editData = resourceData.map(data=>{    
+              if(data.id == id) {
+                  
+                return  {...data,edit:true}  
+              }else {
 
-               return data
-            }
-    
-    })
-    setResourceData(editData)
+                return data
+              }
+      
+      })
+      setResourceData(editData)
    }
 
    const confirmedEditHandler =(newData,id)=>{
 
     const editData = resourceData.map(data=>{
-
         // if(data.id == id){
         //   return {...data,name:newData.name, age:newData.age,edit:false}
         // }else {
         //   return data
         // }
-
         return data.id === id ? {...data,name:newData.name, age:newData.age,edit:false} : data
 
     })
-
     setResourceData(editData)
-    // console.log(data,id)
 
    }
+
+
+   const filteredResouce =(event)=> {
+
+     setFilterName(event.target.value)
+     
+   }
+   let filterInput;
+    if(resourceData.length > 0){
+      
+       filterInput = <TextField onChange={filteredResouce} id="outlined-basic" label="search resouces..." variant="outlined" type="text" style={{display:"block",width:300, margin:"20px auto"}} />
+    }
 
 
 
@@ -116,13 +125,16 @@ const ResourcesMain = (props) => {
                         </Tabs>
                         </Box>
                             {value == 0 && 
-                            <StoredResource 
+                            <>
+                             {filterInput}
+                             <StoredResource 
+                            filterWord={filterName}
                             resourceData={resourceData}
                             confirmedEditHandler={confirmedEditHandler}
                             resourceEditIdeHandler={resourceEditIdeHandler}
                              resourceDeleteHandler={resourceDeleteHandler}>
                                
-                            </StoredResource>}
+                            </StoredResource></>}
 
                             {value == 1 &&  
                             <AddNewResources
