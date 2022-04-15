@@ -24,14 +24,21 @@ const ToastsMain = () => {
 
     const randomToast=()=>{
 
-        let toastLength = toast.length;
-        let rndm = Math.floor(Math.random() * toastLength)
-        
+        if(toast.length !==0) {
+
+            let toastLength = toast.length;
+            console.log(toast.length,toast)
+            let rndm = Math.floor(Math.random() * toastLength)
+            
          setText(toast[rndm].text);
-
-        const removeToast = toast.filter((item,ind)=>ind !== rndm)
-
+         
+         const removeToast = toast.filter((item,ind)=>ind !== rndm)
+         
          setToast(removeToast)
+        }else {
+
+            alert("ბოლო სადღეგრძელო დარჩა")
+        }
 
         
     }

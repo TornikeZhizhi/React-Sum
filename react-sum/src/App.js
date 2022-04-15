@@ -8,6 +8,7 @@ import ProductsContext from "./ContextApi/ProductsContext";
 import ResourcesMain from "./Components/Resources/ResourcesMain";
 import ToastsMain from "./Components/Toasts/ToatsMain";
 import ToastsContext from "./Components/Toasts/ToastContext";
+import HangManMain from "./Components/HangMan/HangManMain";
 
 
 // const colorHandler = (event) => {
@@ -30,6 +31,9 @@ function App() {
             </Route>
             <Route path="/resource" exact>
               <ResourcesMain></ResourcesMain>
+            </Route>
+            <Route path="/hangman" exact>
+              <HangManMain></HangManMain>
             </Route>
             <Route path="/products" exact>
               <Products></Products>

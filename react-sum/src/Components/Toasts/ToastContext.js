@@ -29,7 +29,7 @@ const Dummy_Toast = [
 ]
 
 const ToastsContext = (props) => {
-    const [isDarkMode, setisDarkMode] = useState(true)
+    // const [isDarkMode, setisDarkMode] = useState(true);
 
     return (
         <ToastTheme.Provider value={Dummy_Toast}>
