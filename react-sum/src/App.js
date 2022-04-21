@@ -2,13 +2,14 @@ import Header from "./BaceLayout/Header";
 import {Route ,Switch ,Redirect} from "react-router-dom"
 import Products from "./Components/Producets/Products";
 import ProductDetail from "./Components/Producets/ProductDetail";
-import Home from "./Home/Home";
 import HeaderSwitchContext from "./ContextApi/HeaderSwitcherContext";
 import ProductsContext from "./ContextApi/ProductsContext";
 import ResourcesMain from "./Components/Resources/ResourcesMain";
 import ToastsMain from "./Components/Toasts/ToatsMain";
 import ToastsContext from "./Components/Toasts/ToastContext";
 import HangManMain from "./Components/HangMan/HangManMain";
+import Shop from "./shop/Shop";
+import ShopProvider from "./ContextApi/ShopContext";
 
 
 // const colorHandler = (event) => {
@@ -22,7 +23,7 @@ function App() {
       <ToastsContext>
         <HeaderSwitchContext>
           <ProductsContext>
-
+            <ShopProvider>
           <Header></Header>
     
           <Switch>
@@ -42,9 +43,11 @@ function App() {
               <ProductDetail></ProductDetail>
             </Route>
             <Route to="/" exact>
-              <Home></Home>
+              <Shop></Shop>
             </Route>
           </Switch>
+          
+          </ShopProvider>
           </ProductsContext>
         </HeaderSwitchContext>
         </ToastsContext>

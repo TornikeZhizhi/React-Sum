@@ -14,6 +14,7 @@ const HangManMain = () => {
     const [wrongAnswers,setWrongAnswers] = useState(0)
     const [game, setGame] = useState(null)
     const [letters, setLetters] = useState([])
+    const [disableGame, setDisableGame] = useState(true)
     // const [wordLength, setwordLength] = useState(0)
 
     const lettersArray = [
@@ -62,7 +63,9 @@ const HangManMain = () => {
 
   
     const takeWord = (letter,index) =>{
-        
+        if(disableGame){
+
+    
         let oneCheck = false;   
         let mainCheck = false;   
         let wordLength = 0;
@@ -81,6 +84,7 @@ const HangManMain = () => {
         if(mainCheck && !oneCheck){
             if(wrongAnswers == 6){
                 setGame(false)
+                setDisableGame(false)
             }
             setWrongAnswers(
                 prev => prev + 1,
@@ -109,11 +113,12 @@ const HangManMain = () => {
                 wordLength ++;
                 if(wordLength == stateRandomWord.length){
                     setGame(true)
+                    setDisableGame(false)
                 }
             }
         })
         wordLength = 0;
-    
+    }
     }
     
 
@@ -129,6 +134,7 @@ const HangManMain = () => {
         setWrongAnswers(0);
         setGame(null)
         setLetters(lettersArray)
+        setDisableGame(true)
     }
 
    
