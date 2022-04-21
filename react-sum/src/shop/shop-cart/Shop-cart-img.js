@@ -4,15 +4,16 @@ import { CartContext } from "../../ContextApi/ShopContext";
 
 const ShopCart = () => {
 
-    const {isCartOpen,setIsCartOpen} = useContext(CartContext)
+    const {isCartOpen,setIsCartOpen, cartData} = useContext(CartContext)
 
     const toggleDropdown = ()=> setIsCartOpen(!isCartOpen)
 
+    const localStorageData = JSON.parse(localStorage.getItem("localCartData"))
 
     return (
         <div className='cart-icon-container' onClick={toggleDropdown}>
             <ShoppingIcon className='shopping-icon' />
-            <span className='item-count'>0</span>
+            <span className='item-count'>{localStorageData.length}</span>
          </div>
     );
 };
