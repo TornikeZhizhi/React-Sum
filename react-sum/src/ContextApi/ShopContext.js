@@ -1,4 +1,4 @@
-import { createContext ,useState} from "react";
+import { createContext ,useEffect,useState} from "react";
 
 import SHOP_DATA  from "../shop-data.json";
 
@@ -14,12 +14,31 @@ export const CartContext = createContext({
 
   });
 
+
+
+
  const ShopProvider = ({children}) => {
 
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [shopData , setShopData] = useState(SHOP_DATA);
     const [cartData , setCartData] = useState([]);
     const [cartTotal, setCartTotal] = useState(0)
+
+    // console.log(cartData)
+    let total = 0;
+    useEffect(()=>{
+
+        if(cartData.length > 0){
+
+            cartData.map((item)=>{
+                total = total + item.price
+                setCartTotal(total)
+            }) 
+        }else {
+            setCartTotal(0)
+        }
+    },[cartData])
+
 
 
 
@@ -33,17 +52,25 @@ export const CartContext = createContext({
         }
         if(existingCartItem == undefined){
             setCartData([...cartData,product]);
-            setCartTotal(prev=>prev + product.price);
+
+            // setCartTotal(prev=>prev + product.price);
             // let test = JSON.parse(localStorage.getItem("localCartData"))
             // localStorage.setItem("localCartData",JSON.stringify([...test,product]))
         }
-        // console.log(existingCartItem)
+    }
+
+    const removeItemToCart = (product)=> {
+       const removedData = cartData.filter(item=>{
+            return item.id !== product.id
+       }) 
+
+       setCartData(removedData)
 
     }
 
 
     const value = {isCartOpen, setIsCartOpen, shopData, setShopData,
-        cartData, setOnCartData ,cartTotal} 
+        cartData, setOnCartData ,cartTotal, removeItemToCart} 
 
     return (
         <CartContext.Provider value={value}>
