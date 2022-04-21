@@ -8,7 +8,9 @@ export const CartContext = createContext({
     shopData:SHOP_DATA,
     setShopData:()=>{},
     cartData:[],
-    setCartData:()=>{}
+    setCartData:()=>{},
+    cartTotal:[],
+    setCartTotal:()=>{},
 
   });
 
@@ -17,8 +19,11 @@ export const CartContext = createContext({
     const [isCartOpen, setIsCartOpen] = useState(false);
     const [shopData , setShopData] = useState(SHOP_DATA);
     const [cartData , setCartData] = useState([]);
-    let existingCartItem ;
+    const [cartTotal, setCartTotal] = useState(0)
 
+
+
+    let existingCartItem ;
     const setOnCartData = (product) => {
         
         if(cartData.length > 0){
@@ -28,7 +33,9 @@ export const CartContext = createContext({
         }
         if(existingCartItem == undefined){
             setCartData([...cartData,product]);
-            localStorage.setItem("localCartData",JSON.stringify([...cartData,product]))
+            setCartTotal(prev=>prev + product.price);
+            // let test = JSON.parse(localStorage.getItem("localCartData"))
+            // localStorage.setItem("localCartData",JSON.stringify([...test,product]))
         }
         // console.log(existingCartItem)
 
@@ -36,7 +43,7 @@ export const CartContext = createContext({
 
 
     const value = {isCartOpen, setIsCartOpen, shopData, setShopData,
-        cartData, setOnCartData } 
+        cartData, setOnCartData ,cartTotal} 
 
     return (
         <CartContext.Provider value={value}>

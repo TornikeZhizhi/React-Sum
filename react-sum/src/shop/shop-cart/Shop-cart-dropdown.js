@@ -1,7 +1,7 @@
 import Button from '../../helpers/Button';
 import React, { useContext } from 'react';
 import { CartContext } from "../../ContextApi/ShopContext";
-
+import { useHistory } from "react-router-dom";
 // import { CartContext } from '../../contexts/cart.context';
 
 
@@ -10,18 +10,20 @@ import { CartContext } from "../../ContextApi/ShopContext";
 const CartDropdown = () => {
 
 //context data
- const {cartData} = useContext(CartContext)
+ const {cartData} = useContext(CartContext);
+  const history = useHistory()
+ //local storage
+  // const localStorageData = JSON.parse(localStorage.getItem("localCartData"))
+  // console.log(localStorageData)
 
- //local storage data
-  const localStorageData = JSON.parse(localStorage.getItem("localCartData"))
-  console.log(localStorageData)
+
   return (
     <div className='cart-dropdown-container'>
       <div className='cart-items'>
        
             <>
-            {localStorageData.length > 0 ? 
-               localStorageData.map(item=>
+            {cartData.length > 0 ? 
+               cartData.map(item=>
 
                 <div className='cart-item-container' key={item.id}>
                   <img src={item.imageUrl} alt={`${item.name}`} />
@@ -39,7 +41,7 @@ const CartDropdown = () => {
             </>
           
       </div>
-        <Button buttonType="inverted">Checkout</Button>
+        <Button buttonType="inverted" onClick={ ()=> history.push("/checkout")}>Checkout</Button>
     </div>
   );
 };

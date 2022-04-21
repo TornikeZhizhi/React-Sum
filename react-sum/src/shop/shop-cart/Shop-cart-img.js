@@ -8,12 +8,12 @@ const ShopCart = () => {
 
     const toggleDropdown = ()=> setIsCartOpen(!isCartOpen)
 
-    const localStorageData = JSON.parse(localStorage.getItem("localCartData"))
+    // const localStorageData = JSON.parse(localStorage.getItem("localCartData"))
 
     return (
         <div className='cart-icon-container' onClick={toggleDropdown}>
             <ShoppingIcon className='shopping-icon' />
-            <span className='item-count'>{localStorageData.length}</span>
+            <span className='item-count'>{cartData.length}</span>
          </div>
     );
 };

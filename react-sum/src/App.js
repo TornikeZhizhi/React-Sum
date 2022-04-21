@@ -10,6 +10,7 @@ import ToastsContext from "./Components/Toasts/ToastContext";
 import HangManMain from "./Components/HangMan/HangManMain";
 import Shop from "./shop/Shop";
 import ShopProvider from "./ContextApi/ShopContext";
+import ShopCheckout from "./shop-checkout/Shop-checkout"
 
 
 // const colorHandler = (event) => {
@@ -42,7 +43,10 @@ function App() {
             <Route path="/products/:id">
               <ProductDetail></ProductDetail>
             </Route>
-            <Route to="/" exact>
+            <Route path="/checkout" exact>
+              <ShopCheckout/>
+            </Route>
+            <Route path="/" exact>
               <Shop></Shop>
             </Route>
           </Switch>
